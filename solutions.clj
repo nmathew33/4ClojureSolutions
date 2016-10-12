@@ -36,3 +36,33 @@ true
 ;; Note: the brackets [] surrounding the blanks __ are part of the test case.
 ;; (= [__] (list :a :b :c) (vec '(:a :b :c)) (vector :a :b :c))
 :a :b :c
+
+;; 7
+;; When operating on a Vector, the conj function will return a new vector with one
+;; or more items "added" to the end.
+;; (= __ (conj [1 2 3] 4))
+;; (= __ (conj [1 2] 3 4))
+[1 2 3 4]
+
+;; 8
+;; Sets are collections of unique values.
+;; (= __ (set '(:a :a :b :c :c :c :c :d :d)))
+;; (= __ (clojure.set/union #{:a :b :c} #{:b :c :d}))
+(set '(:a :b :c :d))
+
+;; 9
+;; When operating on a set, the conj function returns a new set with one or more keys "added".
+;; (= #{1 2 3 4} (conj #{1 4 3} __))
+2
+
+;; 10
+;; Maps store key-value pairs. Both maps and keywords can be used as lookup functions.
+;; Commas can be used to make maps more readable, but they are not required.
+;; (= __ ((hash-map :a 10, :b 20, :c 30) :b))
+;; (= __ (:b {:a 10, :b 20, :c 30}))
+20
+
+;; 11
+;; When operating on a map, the conj function returns a new map with one or more key-value pairs "added".
+;; (= {:a 1, :b 2, :c 3} (conj {:a 1} __ [:c 3]))
+[:b 2]
